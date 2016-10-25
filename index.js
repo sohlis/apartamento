@@ -6,6 +6,12 @@ const options = {
     url: 'http://sfbay.craigslist.org/search/apa?search_distance=5&postal=94133&min_price=2000&max_price=4400&bedrooms=1&bathrooms=1&availabilityMode=0'
 };
 
+// timeRange is the distance from last posts to current time
+// 15819421 is about 5 hours behind now
+// Beware, this is last updated time, not first posting
+// TODO: figure out post date
+const timeRange = 7819421;
+
 function callback(error, response, body) {
   if (!error && response.statusCode == 200) {
     // This tells cherio to convert our body string into jQuery style parsable things
@@ -51,7 +57,7 @@ function callback(error, response, body) {
     newerArr = []
 
     newArr.map(x => {
-      if (dateCompare(x[3], 5319421)) {
+      if (dateCompare(x[3], timeRange)) {
         newerArr.push(x);
       }
     });

@@ -2,6 +2,10 @@ const request = require('request');
 const cheerio = require('cheerio');
 const R = require('ramda');
 
+require('dotenv').config();
+
+var client = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
+
 const options = {
     url: 'http://sfbay.craigslist.org/search/apa?search_distance=5&postal=94133&min_price=2000&max_price=4400&bedrooms=1&bathrooms=1&availabilityMode=0'
 };
@@ -63,11 +67,20 @@ function callback(error, response, body) {
       }
     });
 
-    // Log flume
-    console.log(timeRangeArr);
-    console.log(timeRangeArr.length);
+    // Text it
+    // For every entry in timeRangeArr we are going to send a text using twilio
+    timeRangeArr.map((x) => {
+      client.messages.create({
+          to: process.env.MYPHONENUMBER,
+          from: process.env.TWILIOPHONENUMBER,
+          body: x[0] + ` ` + x[1],
+      }, function(err, message) {
+          console.log(`- ` + message.body);
+      });
+    })
   }
 }
+
 
 request(options, callback);
 

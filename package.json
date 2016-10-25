@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "dotenv": "^2.0.0",
     "ramda": "^0.22.1",
-    "request": "^2.75.0"
+    "request": "^2.75.0",
+    "twilio": "^2.11.0"
   }
 }

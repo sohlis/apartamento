@@ -58,6 +58,7 @@ const callback = (error, response, body) => {
     // timeRange is the distance from last posts to current time
     // 15819421 is about 5 hours behind now
     // Beware, this is last updated time, not first posting
+    // Also BEWARE: this way of doing it is very brittle and will break shit
     // TODO: Construct a function that is more human readable
     //       for timeRange
     const timeRange = 1819421;

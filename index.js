@@ -10,7 +10,7 @@ const client = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 
 const options = {
     // Setup your search in craigslist to your liking
-    url: 'http://sfbay.craigslist.org/search/apa?query=-special+-%22Brand+new%22+-zipcar+-furnished&srchType=T&hasPic=1&search_distance=5&postal=94133&min_price=2000&max_price=4400&bedrooms=1&bathrooms=1&availabilityMode=0'
+    url: 'http://sfbay.craigslist.org/search/apa?query=-special+-%22Brand+new%22+-zipcar+-furnished+-%22free+month%22&srchType=T&hasPic=1&search_distance=5&postal=94133&min_price=2000&max_price=4400&bedrooms=1&bathrooms=1&availabilityMode=0'
 };
 
 const callback = (error, response, body) => {
